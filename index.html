@@ -94,27 +94,32 @@
                 </div>
             </div>
         </div>
-      <section style="display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px;">
+<section style="display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px;">
   <form id="uploadForm" enctype="multipart/form-data"
     style="max-width: 400px; width: 100%; background: #fff; padding: 20px; border-radius: 12px;
-           box-shadow: 0 8px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 14px;">
+           box-shadow: 0 8px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 16px;">
 
-    <div style="display: flex; flex-direction: column; gap: 6px;">
-      <label for="fileInput" style="font-weight: bold; font-size: 14px;">
-        If any error happens, take a screenshot and send it here.
+    <!-- File Upload -->
+    <div style="display: flex; flex-direction: column;">
+      <label for="fileInput" style="font-weight: bold; font-size: 14px; margin-bottom: 6px;">
+        If any error happens, take a screenshot and send it here:
       </label>
       <input type="file" id="fileInput" name="file" required
         accept=".pdf, .jpg, .jpeg, .png, .mp4"
         style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 6px;">
-      <label for="emailInput" style="font-weight: bold; font-size: 14px;">Your Email:</label>
+    <!-- Email -->
+    <div style="display: flex; flex-direction: column;">
+      <label for="emailInput" style="font-weight: bold; font-size: 14px; margin-bottom: 6px;">
+        Your Email:
+      </label>
       <input type="email" id="emailInput" name="email" required
         placeholder="example@email.com"
         style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
     </div>
 
+    <!-- Upload Button -->
     <button type="submit"
       style="background: linear-gradient(to right, #0088cc, #005fa3); color: white; font-weight: bold;
              padding: 12px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;
@@ -123,6 +128,7 @@
     </button>
   </form>
 </section>
+
 
 
   
