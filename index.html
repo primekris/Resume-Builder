@@ -62,7 +62,7 @@
   style="max-width: 400px; margin: 40px auto; background: #fff; padding: 20px; border-radius: 12px;
          box-shadow: 0 8px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 14px;">
   
-  <label style="font-weight: bold; font-size: 14px;"> Choose File:</label>
+  <label style="font-weight: bold; font-size: 14px;">If any error happens, take a screenshot and send it here.</label>
   <input type="file" id="fileInput" name="file" required
     accept=".pdf, .jpg, .jpeg, .png, .mp4"
     style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
@@ -126,9 +126,38 @@
                 </div>
             </div>
         </div>
+    <form id="uploadForm" enctype="multipart/form-data"
+  style="max-width: 400px; margin: 40px auto; background: #fff; padding: 20px; border-radius: 12px;
+         box-shadow: 0 8px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 14px;">
   
+  <label style="font-weight: bold; font-size: 14px;">If any error happens, take a screenshot and send it here.</label>
+  <input type="file" id="fileInput" name="file" required
+    accept=".pdf, .jpg, .jpeg, .png, .mp4"
+    style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
 
+  <label style="font-weight: bold; font-size: 14px;">Your Email:</label>
+  <input type="email" id="emailInput" name="email" required
+    placeholder="example@email.com"
+    style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
 
+  <button type="submit"
+    style="background: linear-gradient(to right, #0088cc, #005fa3); color: white; font-weight: bold;
+           padding: 12px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+     Upload 
+  </button>
+</form>
+
+<div id="toast"
+  style="visibility: hidden; min-width: 200px; background-color: #323232; color: #fff;
+         text-align: center; border-radius: 8px; padding: 12px 16px; position: fixed;
+         bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9999;
+         font-family: sans-serif; font-size: 14px; opacity: 0;
+         transition: opacity 0.5s ease, bottom 0.5s ease;">
+  ✅ File sent!
+</div>
+
+ <ul>
         <footer class = "footer bg-dark">
             <p class="h5">Projects</p>
           </li>
@@ -144,7 +173,8 @@
           <li>
             <a href="https://primekris.github.io/BLOGGY" class="footer-link hover:underline">BLOGGY</a>
           </li>
-
+ </ul>
+         <ul>
             <li>
             <p class="h5">About</p>
           </li>
@@ -159,12 +189,8 @@
           <li>
             <a href="https://www.reddit.com/user/Worried-Chipmunk-369/" class="footer-link hover:underline">TAGS</a>
           </li>
-             <li>
-          <li>
-            <a href="mailto:allntellect@outlook.com" class="footer-link hover:underline">Contact</a>
-          </li>
-
-            
+             </ul>
+             <ul>
             <li>
             <p class="h5">Social</p>
           </li>
@@ -180,7 +206,7 @@
 
             <a href="https://github.com/primekris" class="footer-link hover:underline">Github</a>
           </li>
-
+ </ul>
             <div class="container">
                 <div class = "footer-content text-center">
                     <p class="fs-15">&copy;mailto:allntellect@outlook.com - <span> Resume Builder </span><span>| Primekris</span></p>
