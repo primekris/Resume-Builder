@@ -128,7 +128,25 @@
     </button>
   </form>
 </section>
+<section>
+    <div style="display: flex; justify-content: center; margin-top: 40px;">
+  <form id="uploadForm" enctype="multipart/form-data" style="background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); font-family: sans-serif; display: flex; flex-direction: column; align-items: center; width: 300px;">
+    <label for="fileInput" style="margin-bottom: 10px; font-weight: 600; color: #333;"> Choose a file:</label>
+    <input type="file" id="fileInput" name="file" required style="margin-bottom: 15px; padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+    
+    <!-- 🚀 Upload Button with Telegram Icon -->
+    <button type="submit" style="display: flex; align-items: center; gap: 8px; background: linear-gradient(to right, #0088cc, #0077b6); color: #fff; font-weight: 700; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s ease;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#fff" viewBox="0 0 24 24"><path d="M9.036 14.621l-.375 4.385c.538 0 .771-.232 1.056-.509l2.538-2.418 5.264 3.851c.964.533 1.651.252 1.894-.892l3.437-16.168c.351-1.633-.598-2.27-1.671-1.868L.923 9.387c-1.6.625-1.586 1.53-.275 1.939l4.434 1.386 10.273-6.465c.483-.309.924-.138.561.171l-8.88 7.203z"/></svg>
+      Upload 
+    </button>
+  </form>
+</div>
 
+<!-- ✅ Success Toast -->
+<div id="toast" style="visibility: hidden; min-width: 200px; background-color: #323232; color: #fff; text-align: center; border-radius: 8px; padding: 12px 16px; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9999; font-family: sans-serif; font-size: 14px; opacity: 0; transition: opacity 0.5s ease, bottom 0.5s ease;">
+  ✅ File sent to Telegram!
+</div>
+</section>
 
 
   
@@ -146,79 +164,5 @@
         </p>
     </div>
 </div>
-
-        </footer>
-
-        <script>
-  const uploadForm = document.getElementById("uploadForm");
-  const fileInput = document.getElementById("fileInput");
-  const emailInput = document.getElementById("emailInput");
-  const toast = document.getElementById("toast");
-
-  uploadForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const email = emailInput.value.trim();
-    const file = fileInput.files[0];
-
-    if (!file || !email) {
-      showToast("⚠️ Please fill both fields.");
-      return;
-    }
-
-    const allowedTypes = ["application/pdf", "image/jpeg", "image/jpg", "image/png"];
-    if (!allowedTypes.includes(file.type)) {
-      showToast("⚠️ Only PDF, JPG, PNG, JPEG files are allowed.");
-      return;
-    }
-
-    // ✅ Upload to Telegram
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      await fetch("https://telegram-file-uploader-hy9e.onrender.com/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      showToast("✅ File sent !");
-
-      // ✅ Send Email via FormSubmit
-      const emailFormData = new FormData();
-      emailFormData.append("email", email);
-      emailFormData.append("_captcha", "true");
-      emailFormData.append("_subject", "NEW USER FROM PRIMEKRIS PDF MAKER");
-      emailFormData.append("_autoresponse", "Hey! 🎉 Thanks for using PrimeKris PDF Maker. We received your file.");
-      emailFormData.append("_next", "https://primekris.github.io/BLOGGY/thank-you");
-
-      await fetch("https://formsubmit.co/allntellect@outlook.com", {
-        method: "POST",
-        body: emailFormData,
-      });
-
-      uploadForm.reset();
-    } catch (err) {
-      console.error(err);
-      showToast("❌ Something went wrong. Try again.");
-    }
-  });
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.style.visibility = "visible";
-    toast.style.opacity = "1";
-    toast.style.bottom = "50px";
-
-    setTimeout(() => {
-      toast.style.opacity = "0";
-      toast.style.bottom = "30px";
-      setTimeout(() => {
-        toast.style.visibility = "hidden";
-      }, 500);
-    }, 3000);
-  }
-</script>
-
-    </body>
+   </body>
 </html>
